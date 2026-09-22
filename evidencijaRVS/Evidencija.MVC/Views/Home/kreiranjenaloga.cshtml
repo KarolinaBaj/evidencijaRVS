@@ -1,10 +1,40 @@
-﻿<!DOCTYPE html>
+﻿@model evidencijaRVS.Evidencija.DAL.Models.Korisnik
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
 <body>
+    <div class="signupstrana">
+        <form asp-controller="Account" asp-action="kreiranjenaloga" method="post">
+
+            <label>Ime</label><br >
+            <input asp-for="ime" placeholder="Ime"/> <br>
+            <span asp-validation-for="ime"></span> <br >
+
+            <label>Prezime</label><br >
+            <input asp-for="prezime" placeholder="Prezime" /> <br>
+            <span asp-validation-for="prezime"></span> <br>
+
+            <label>Korisnički email</label> <br >
+            <input asp-for="email" placeholder="Email"/> <br >
+            <span asp-validation-for="email"></span> <br>
+
+            <label>Lozinka</label><br >
+            <input asp-for="lozinka" placeholder="Lozinka" type="password" /> <br>
+            <span asp-validation-for="lozinka"></span> <br>
+
+            <label>adresa</label><br >
+            <input asp-for="adresa" placeholder="Adresa" /> <br>
+            <span asp-validation-for="adresa"></span> <br>
+
+            <button type="submit">Kreiraj nalog</button>
+
+        </form>
+
+    </div>
 
 </body>
 </html>

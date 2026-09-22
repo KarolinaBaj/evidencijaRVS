@@ -1,10 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@model evidencijaRVS.Evidencija.DAL.Models.Korisnik
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
 <body>
+    <div class="loginstrana">
+        <form asp-controller="Account" asp-action="stranazalogovanje" method="post">
+            <label>Korisnički email:</label><br >
+            <input asp-for="email" placeholder="Email" ></input> <br >
+            <span asp-validation-for="email"></span>
 
+            <label>Lozinka:</label><br>
+            <input asp-for="lozinka" placeholder="Lozinka" type="password"></input> <br >
+            <span asp-validation-for="lozinka"></span>
+
+            <button type="submit">Prijavi se</button>
+        </form>
+
+    </div>
 </body>
 </html>
