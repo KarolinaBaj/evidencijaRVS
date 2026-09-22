@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Evidencija.DAL\" />
+    <Folder Include="Evidencija.BLL\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +74,14 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.slim.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.slim.min.map" />
     <None Include="wwwroot\lib\jquery\LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

@@ -27,6 +27,15 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <li class="nav-item">
+                        <form asp-controller="Account" asp-action="stranazalogovanje" method="post">
+                          <button class="nav-item text-dark logindugme" href="" target="_blank" rel="noopener noreferrer" asp-controller="Account" asp-action="stranazalogovanje">Log in</button> 
+                       </form>
+                        <form asp-controller="Account" asp-action="kreiranjenaloga" method="post">
+                            <button class="nav-item text-dark signupdugme" href="" target="_blank" rel="noopener noreferrer" asp-controller="Account" asp-action="kreiranenaloga">sign up</button>
+                        </form>
+                    </li>
+
                 </div>
             </div>
         </nav>
