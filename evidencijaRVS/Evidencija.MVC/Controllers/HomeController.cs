@@ -2,7 +2,7 @@ using System.Diagnostics;
 using evidencijaRVS.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace evidencijaRVS.Controllers
+namespace evidencijaRVS.Evidencija.MVC.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,12 +15,12 @@ namespace evidencijaRVS.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("~/Evidencija.MVC/Views/Home/Index.cshtml");
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("~/Evidencija.MVC/Views/Home/Privacy.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
