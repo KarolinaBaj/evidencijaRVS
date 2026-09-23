@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using evidencijaRVS.Evidencija.DAL.Models;
 using evidencijaRVS.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,11 +23,14 @@ namespace evidencijaRVS.Evidencija.MVC.Controllers
         {
             return View("~/Evidencija.MVC/Views/Home/Privacy.cshtml");
         }
+    
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
     }
 }

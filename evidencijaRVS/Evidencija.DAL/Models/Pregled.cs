@@ -23,8 +23,8 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         [Column("terapija")]
         public string terapija { get; set; }
         [Required]
-        [Column("hitanalucaj")]
-        public bool hitanalucaj { get; set; }
+        [Column("hitanslucaj")]
+        public bool hitanslucaj { get; set; }
         [Required]
         [Column("prioritetpregleda")]
         public string prioritetpregleda { get; set; }

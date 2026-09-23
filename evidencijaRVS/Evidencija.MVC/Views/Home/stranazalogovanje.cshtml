@@ -9,15 +9,18 @@
 <body>
     <div class="loginstrana">
         <form asp-controller="Account" asp-action="stranazalogovanje" method="post">
-            <label>Korisnički email:</label><br >
-            <input asp-for="email" placeholder="Email" ></input> <br >
-            <span asp-validation-for="email"></span>
-
+            <label>Korisnički email:</label>
+            <br >
+            <input asp-for="email" placeholder="Email" ></input> 
+            <br >
+            <span asp-validation-for="email"></span> 
+            <br >
             <label>Lozinka:</label><br>
             <input asp-for="lozinka" placeholder="Lozinka" type="password"></input> <br >
             <span asp-validation-for="lozinka"></span>
-
+            <br >
             <button type="submit">Prijavi se</button>
+            <br>
         </form>
 
     </div>
