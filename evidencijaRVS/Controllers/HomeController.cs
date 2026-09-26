@@ -3,7 +3,7 @@ using evidencijaRVS.Evidencija.DAL.Models;
 using evidencijaRVS.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace evidencijaRVS.Evidencija.MVC.Controllers
+namespace evidencijaRVS.Controllers
 {
     public class HomeController : Controller
     {
@@ -16,14 +16,14 @@ namespace evidencijaRVS.Evidencija.MVC.Controllers
 
         public IActionResult Index()
         {
-            return View("~/Evidencija.MVC/Views/Home/Index.cshtml");
+            return View("~/Views/Home/Index.cshtml");
         }
 
         public IActionResult Privacy()
         {
-            return View("~/Evidencija.MVC/Views/Home/Privacy.cshtml");
+            return View("~/Views/Home/Privacy.cshtml");
         }
-    
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -31,6 +31,6 @@ namespace evidencijaRVS.Evidencija.MVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
+
     }
 }

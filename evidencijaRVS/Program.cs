@@ -7,11 +7,7 @@ using evidencijaRVS.Evidencija.BLL.Interfaces;
 using evidencijaRVS.Evidencija.BLL.Servicess;
 using System.Runtime.InteropServices;
 
-var builder = WebApplication.CreateBuilder(new WebApplicationOptions
-{
-    Args = args,
-    ContentRootPath = Path.Combine(Directory.GetCurrentDirectory(), "Evidencija.MVC")
-});
+var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
