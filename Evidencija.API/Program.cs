@@ -1,6 +1,27 @@
+using Evidencija.BLL.Interfaces;
+using Evidencija.BLL.Pravila;
+using Evidencija.DAL.Repozitorijumi;
+using evidencijaRVS.Evidencija.BLL.Interfaces;
+using evidencijaRVS.Evidencija.BLL.Servicess;
+using evidencijaRVS.Evidencija.DAL;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container.builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<EvidencijaDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped(_ => new PravilaCitac(Path.Combine(AppContext.BaseDirectory, "Poslovno_praviloparametri.json")));
+builder.Services.AddScoped<PregledRepozitorijum>();
+
+
+builder.Services.AddScoped<korisnikiservice, KorisnikService>();
+builder.Services.AddScoped<Ipregledservice, Pregledservices>();
+builder.Services.AddScoped<KorisnikRepozitorijum>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

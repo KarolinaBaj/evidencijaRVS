@@ -4,7 +4,7 @@ namespace evidencijaRVS.Controllers
 {
     public class AnamnezaController : Controller
     {
-        public IActionResult Index()
+        public IActionResult IStampajspisak()
         {
             return View();
         }

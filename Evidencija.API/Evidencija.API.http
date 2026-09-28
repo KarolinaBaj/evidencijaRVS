@@ -1,0 +1,6 @@
+@Evidencija.API_HostAddress = http://localhost:5162
+
+GET {{Evidencija.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
