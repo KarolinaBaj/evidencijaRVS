@@ -22,5 +22,10 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         [Required]
         [Column("napomena")]
         public string napomena { get; set; }
+
+        [ForeignKey("pregled_id")]
+        public Pregled pregled { get; set; }
+        [ForeignKey("lek_id")]
+        public lek Lek{ get; set; }
     }
 }

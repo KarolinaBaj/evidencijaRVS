@@ -26,14 +26,17 @@ namespace Evidencija.DAL.Repozitorijumi
         {
             var upit = _tabela.Include("Terapije").AsQueryable();
 
-            if (datumod.HasValue)
-                upit = upit.Where(p => p.datumpregleda >= datumod.Value);
+            if (datumod.HasValue) { 
+                var od = datumod.Value;
+                upit = upit.Where(p => p.datumpregleda >= od);}
 
-            if (datumDo.HasValue)
-                upit = upit.Where(p => p.datumpregleda <= datumDo.Value);
+            if (datumDo.HasValue) { 
+                var DoDatuma = datumDo.Value.Date.AddDays(1);
+                upit = upit.Where(p => p.datumpregleda <= DoDatuma);}
 
-            if (!hitaSlucaj.HasValue)
-                upit = upit.Where(p => p.hitanslucaj == hitaSlucaj.Value);
+            if (hitaSlucaj.HasValue) { 
+                var hitan = hitaSlucaj.Value;
+                upit = upit.Where(p => p.hitanslucaj == hitan);}
             if (!string.IsNullOrWhiteSpace(prioritet))
                 upit = upit.Where(p => p.prioritetpregleda == prioritet);
 

@@ -21,6 +21,14 @@ html {
     margin: 0 5px;
 }
 
+.loginstrana,
+.signupstrana {
+    width: 350px;
+    margin: 50px auto;
+    text-align: center;
+    scroll-margin-bottom: 10px;
+}
+
 html {
     position: relative;
     min-height: 100%;

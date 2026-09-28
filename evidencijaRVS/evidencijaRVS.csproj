@@ -80,4 +80,12 @@
     <ProjectReference Include="..\Evidencija.BLL\Evidencija.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Poslovno_praviloparametri.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

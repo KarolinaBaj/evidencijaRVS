@@ -7,6 +7,8 @@ using evidencijaRVS.Evidencija.BLL.Interfaces;
 using evidencijaRVS.Evidencija.BLL.Servicess;
 using System.Runtime.InteropServices;
 using Evidencija.DAL.Repozitorijumi;
+using Evidencija.BLL.Pravila;
+using Evidencija.BLL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EvidencijaDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped(_ => new PravilaCitac(Path.Combine(AppContext.BaseDirectory, "Poslovno_praviloparametri.json")));
+builder.Services.AddScoped<PregledRepozitorijum>();
+
+
 builder.Services.AddScoped<korisnikiservice, KorisnikService>();
-builder.Services.AddScoped<Preglediservice, Pregledservices>();
+builder.Services.AddScoped<Ipregledservice, Pregledservices>();
 builder.Services.AddScoped<KorisnikRepozitorijum>();
 var app = builder.Build();
 
