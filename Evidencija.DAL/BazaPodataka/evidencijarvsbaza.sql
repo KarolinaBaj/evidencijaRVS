@@ -1,5 +1,7 @@
 Create database evidencijarvs
-
+go
+use evidencijarvs
+go
 create table korisnik(
 korisnik_id int identity(1,1) primary key,
 ime nvarchar(100) not null,

@@ -2,39 +2,45 @@
 using evidencijaRVS.Evidencija.BLL.Interfaces;
 using evidencijaRVS.Evidencija.DAL;
 using evidencijaRVS.Evidencija.DAL.Models;
+using Evidencija.DAL.Repozitorijumi;
 
 
 namespace evidencijaRVS.Evidencija.BLL.Servicess
 {
     public class KorisnikService : korisnikiservice
     {
-        private readonly EvidencijaDBcontext _context;
-        public KorisnikService(EvidencijaDBcontext context)
+        private readonly KorisnikRepozitorijum _repo;
+
+        public KorisnikService(KorisnikRepozitorijum repo)
         {
-            _context = context;
+            _repo = repo;
         }
+        
+      
 
-        public async Task<Korisnik> ValidateKorisnikAsync(string email, string lozinka)
+        public Task<Korisnik> ValidateKorisnikAsync(string email, string lozinka)
         {
-            var kroisnik = await _context.Korisnici.FirstOrDefaultAsync(k => k.email == email && k.lozinka == lozinka);
-            if (kroisnik == null) {
-                return null;
-            }
-            return kroisnik;
-
-        }
-
-        public async Task<Korisnik> CreateKorisnikAsync(Korisnik korisnik)
-        {
-            var postojecikorisnik = await _context.Korisnici.FirstOrDefaultAsync(k => k.email == korisnik.email);
-            if (postojecikorisnik != null)
+            var korisnik = _repo.DobaviPoEmailu(email);
+            if (korisnik == null || korisnik.lozinka != lozinka)
             {
-                throw new Exception("Korisnik sa ovim emailom već postoji.");
+                return Task.FromResult<Korisnik>(null);
             }
+            return Task.FromResult(korisnik);
 
-            await _context.Korisnici.AddAsync(korisnik);
-            await _context.SaveChangesAsync();
-            return korisnik;
         }
+
+        public Task <Korisnik> CreateKorisnikAsync(Korisnik korisnik)
+        {
+            if (_repo.DobaviPoEmailu(korisnik.email) != null)
+                throw new Exception("Korisnik s ovom email adresom vec postoji");
+
+            _repo.Dodaj(korisnik);
+            return Task.FromResult(korisnik);
+        }
+
+       
+
+
+    
 }
 }

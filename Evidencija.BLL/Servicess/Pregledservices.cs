@@ -23,16 +23,7 @@ namespace evidencijaRVS.Evidencija.BLL.Servicess
 
         private void OceniHitnost(Pregled pregled)
         {
-            if (pregled.telesna_temperatura> Medicinskipregledi.Maxnormalnatemperatura)
-            {
-                pregled.hitanslucaj = true;
-                pregled.prioritetpregleda = "Hitno";
-            }
-            else
-            {
-                pregled.hitanslucaj = false;
-                pregled.prioritetpregleda = "Nije hitno";
-            }
+      
         }
 
 

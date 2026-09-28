@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using evidencijaRVS.Evidencija.BLL.Interfaces;
 using evidencijaRVS.Evidencija.BLL.Servicess;
 using System.Runtime.InteropServices;
+using Evidencija.DAL.Repozitorijumi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EvidencijaDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<korisnikiservice, KorisnikService>();
 builder.Services.AddScoped<Preglediservice, Pregledservices>();
+builder.Services.AddScoped<KorisnikRepozitorijum>();
 var app = builder.Build();
 
 

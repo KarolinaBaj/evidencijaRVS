@@ -1,7 +1,9 @@
-﻿namespace evidencijaRVS.Evidencija.BLL
+﻿
+namespace evidencijaRVS.Evidencija.BLL
 {
     public class Medicinskipregledi
     {
-        public const decimal Maxnormalnatemperatura = 39.5m;
+       public decimal Temperatura { get; set; }
+        public string PrioritetHitnosti { get; set; }
     }
 }
