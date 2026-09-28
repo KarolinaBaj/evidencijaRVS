@@ -16,6 +16,12 @@ namespace evidencijaRVS.Evidencija.DAL
         public DbSet<Pregled> Pregledi { get; set; }
         public DbSet<zivotinje> Zivotinja { get; set; }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Pregled>()
+                .Property(p => p.telesna_temperatura)
+                .HasPrecision(4,1);
+        }
     }
 }
