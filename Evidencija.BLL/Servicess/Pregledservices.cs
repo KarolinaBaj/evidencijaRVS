@@ -47,10 +47,12 @@ namespace evidencijaRVS.Evidencija.BLL.Servicess
                 pregled.hitanslucaj = true;
                 pregled.prioritetpregleda = p.PrioritetHitnosti;
             }
+            else
+            {
+                pregled.hitanslucaj = false;
+                pregled.prioritetpregleda = "Normalan";
+            }
         }
-
-
-        
 
 
     }

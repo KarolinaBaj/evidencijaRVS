@@ -13,6 +13,7 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         public int anamneza_id { get; set; }
         [Required]
         [Column("zivotinja_id")]
+        
         public int zivotinja_id { get; set; }
         [Required]
         [StringLength(int.MaxValue)]
@@ -46,5 +47,9 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         [Column("datumunosa")]
         public DateTime datumunosa { get; set; }
         
+        [ForeignKey("zivotinja_id")]
+        public zivotinje zivotinje{ get; set; }
+       
+        public ICollection<Pregled> Pregledi { get; set; } = new List<Pregled>();
     }
 }

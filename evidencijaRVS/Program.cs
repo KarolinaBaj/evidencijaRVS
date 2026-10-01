@@ -18,9 +18,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EvidencijaDBcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped(_ => new PravilaCitac(Path.Combine(AppContext.BaseDirectory, "Poslovno_praviloparametri.json")));
 builder.Services.AddScoped<PregledRepozitorijum>();
-builder.Services.AddHttpClient("Api", c =>
-    c.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"]));
 
+builder.Services.AddHttpClient("api", k => k.BaseAddress = new Uri("http://localhost:5162/"));
 builder.Services.AddScoped<korisnikiservice, KorisnikService>();
 builder.Services.AddScoped<Ipregledservice, Pregledservices>();
 builder.Services.AddScoped<KorisnikRepozitorijum>();

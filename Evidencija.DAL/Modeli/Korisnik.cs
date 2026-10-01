@@ -32,5 +32,7 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         [StringLength(100)]
         [Column("adresa")]
         public string adresa { get; set; }
+
+
     }
 }

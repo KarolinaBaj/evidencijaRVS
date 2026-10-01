@@ -12,6 +12,7 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         public int zivotinja_id { get; set; }
         [Required]
         [Column ("korisnik_id")]
+        [ForeignKey("korisnik_id")]
         public int korisnik_id { get; set; }
         [Required]
         [StringLength(50)]
