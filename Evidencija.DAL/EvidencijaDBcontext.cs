@@ -14,7 +14,7 @@ namespace evidencijaRVS.Evidencija.DAL
         public DbSet<terapija> Terapije { get; set; }
         public DbSet<anamneza> Anamneze { get; set; }
         public DbSet<Pregled> Pregledi { get; set; }
-        public DbSet<zivotinje> Zivotinja { get; set; }
+        public DbSet<zivotinja> Zivotinje { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

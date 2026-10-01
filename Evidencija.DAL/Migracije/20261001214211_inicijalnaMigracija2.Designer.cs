@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using evidencijaRVS.Evidencija.DAL;
 
@@ -11,9 +12,11 @@ using evidencijaRVS.Evidencija.DAL;
 namespace Evidencija.DAL.Migrations
 {
     [DbContext(typeof(EvidencijaDBcontext))]
-    partial class EvidencijaDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20261001214211_inicijalnaMigracija2")]
+    partial class inicijalnaMigracija2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -18,7 +18,8 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         public int lek_id { get; set; }
         [Required]
         [Column("kolicina")]
-        public int kolicina { get; set; }
+        
+        public string kolicina { get; set; }
         [Required]
         [Column("napomena")]
         public string napomena { get; set; }

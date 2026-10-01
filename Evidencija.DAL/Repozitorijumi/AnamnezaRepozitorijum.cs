@@ -1,5 +1,6 @@
 ﻿using evidencijaRVS.Evidencija.DAL;
 using evidencijaRVS.Evidencija.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace Evidencija.DAL.Repozitorijumi
     public class AnamnezaRepozitorijum : BazniRepozitorijum<anamneza>
     {
         public AnamnezaRepozitorijum(EvidencijaDBcontext baza) : base(baza) { }
+
+      
     }
 }

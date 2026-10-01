@@ -19,6 +19,7 @@ builder.Services.AddScoped(_ => new PravilaCitac(Path.Combine(AppContext.BaseDir
 builder.Services.AddScoped<PregledRepozitorijum>();
 
 
+
 builder.Services.AddScoped<korisnikiservice, KorisnikService>();
 builder.Services.AddScoped<Ipregledservice, Pregledservices>();
 builder.Services.AddScoped<KorisnikRepozitorijum>();

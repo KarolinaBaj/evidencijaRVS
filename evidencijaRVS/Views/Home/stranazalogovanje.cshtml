@@ -1,28 +1,26 @@
-﻿@model evidencijaRVS.Evidencija.DAL.Models.Korisnik
+﻿@using evidencijaRVS.ViewModels
+@using evidencijaRVS.ViewModels
+@model PrijavaViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    <div class="loginstrana">
-        <form asp-controller="Account" asp-action="stranazalogovanje" method="post">
-            <label>Korisnički email:</label>
-            <br >
-            <input asp-for="email" placeholder="Email" ></input> 
-            <br >
-            <span asp-validation-for="email"></span> 
-            <br >
-            <label>Lozinka:</label><br>
-            <input asp-for="lozinka" placeholder="Lozinka" type="password"></input> <br >
-            <span asp-validation-for="lozinka"></span>
-            <br >
-            <button type="submit">Prijavi se</button>
-            <br>
-        </form>
+<form asp-controller="Account" asp-action="stranazalogovanje" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-</body>
-</html>
+    <div class="mb-3">
+        <label asp-for="Lozinka" class="form-label"></label>
+        <input asp-for="Lozinka" class="form-control" />
+        <span asp-validation-for="Lozinka" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary">Prijavi se</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

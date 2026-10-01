@@ -14,9 +14,7 @@ namespace evidencijaRVS.Controllers
             _klijent = fabrika.CreateClient("api");
         }
 
-
-
-
+        
         public async Task<IActionResult> Index(DateTime? datumod, DateTime? datumdo, bool? hitanslucaj, string? prioritet)
         {
             var parametri = new List<string>();
@@ -41,46 +39,81 @@ namespace evidencijaRVS.Controllers
 
        
         [HttpGet]
-        public IActionResult Dodaj()
+        public IActionResult Dodaj(int anamnezaId)
         {
-            return View(new Pregled { datumpregleda = DateTime.Today });
+            var model = new Pregled
+            {
+                anamneza_id = anamnezaId,
+                datumpregleda = DateTime.Today
+            };
+            return View(model);
         }
 
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Dodaj(Pregled pregled)
         {
-            if (!ModelState.IsValid) return View(pregled);
+            
+            if (pregled.datumpregleda == default)
+            {
+                pregled.datumpregleda = DateTime.Now;
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(pregled);
+            }
 
             var odgovor = await _klijent.PostAsJsonAsync("api/pregledi", pregled);
-            if (odgovor.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
+            if (odgovor.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
-            ModelState.AddModelError("", "Čuvanje pregleda nije uspelo.");
+            ModelState.AddModelError("", "Čuvanje pregleda nije uspelo preko API-ja.");
             return View(pregled);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Izmeni(int id)
         {
             var pregled = await _klijent.GetFromJsonAsync<Pregled>($"api/pregledi/{id}");
-            if (pregled == null) return NotFound();
-            return View(pregled);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Izmeni(int id, Pregled pregled)
-        {
-            if (!ModelState.IsValid) return View(pregled);
-
-            var odgovor = await _klijent.PutAsJsonAsync($"api/pregledi/{id}", pregled);
-            if (odgovor.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
-
-            ModelState.AddModelError("", "Izmena pregleda nije uspela.");
+            if (pregled == null)
+            {
+                return NotFound();
+            }
             return View(pregled);
         }
 
        
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Izmeni(int id, Pregled pregled)
+        {
+            if (id != pregled.pregled_id)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(pregled);
+            }
+
+            var odgovor = await _klijent.PutAsJsonAsync($"api/pregledi/{id}", pregled);
+            if (odgovor.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            ModelState.AddModelError("", "Izmena pregleda nije uspela preko API-ja.");
+            return View(pregled);
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Obrisi(int id)
         {
             await _klijent.DeleteAsync($"api/pregledi/{id}");

@@ -48,7 +48,7 @@ namespace evidencijaRVS.Evidencija.DAL.Models
         public DateTime datumunosa { get; set; }
         
         [ForeignKey("zivotinja_id")]
-        public zivotinje zivotinje{ get; set; }
+        public zivotinja zivotinje{ get; set; }
        
         public ICollection<Pregled> Pregledi { get; set; } = new List<Pregled>();
     }

@@ -1,0 +1,96 @@
+﻿@model evidencijaRVS.Evidencija.DAL.Models.anamneza
+
+@{
+    ViewData["Title"] = "Nova Anamneza";
+}
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="utf-8" />
+    <title>Unos anamneze</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            font-variant: small-caps;
+            margin-bottom: 25px;
+        }
+        @@media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .form-container { border: none; box-shadow: none; margin: 0; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Unos nove anamneze</h2>
+        <hr />
+
+        <button onclick="window.print()" class="no-print btn btn-outline-secondary mb-3">
+            Štampaj stranicu
+        </button>
+
+        <form asp-action="Dodaj" method="post">
+            <input type="hidden" name="zivotinja_id" value="@ViewBag.ZivotinjaId" />
+
+            <div class="mb-3">
+                <label class="form-label"><b>4. Razlog dolaska (promene i simptomi):</b></label>
+                <textarea asp-for="Razlogdolaska" class="form-control" rows="3" required placeholder="Unesite simptome i kada su primetili..."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><b>5. Ishrana:</b></label>
+                <input asp-for="ishrana" class="form-control" placeholder="Vrsta hrane, učestalost..." />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><b>6. Urin i stolica:</b></label>
+                <input asp-for="Urinistolica" class="form-control" placeholder="Opis i učestalost..." />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><b>7. Smeštaj:</b></label>
+                <input asp-for="Smestaj" class="form-control" placeholder="Kuća, dvorište, box..." />
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Primaolekove" class="form-check-input" type="checkbox" id="Primaolekove" />
+                <label class="form-check-label" for="Primaolekove"><b>8. Da li je životinja prethodno primala neke lekove?</b></label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><b>9. Koje lekove je životinja primala?</b></label>
+                <input asp-for="kojelekove" class="form-control" placeholder="Naziv lekova (ako je primala)..." />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><b>10. Da li je životinja ranije bolovala od nečeg sličnog?</b></label>
+                <input asp-for="ranijebolovala" class="form-control" placeholder="Detalji o ranijim bolestima..." />
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success px-4">Sačuvaj anamnezu</button>
+                <a asp-controller="Pregled" asp-action="Index" class="btn btn-secondary px-4">Otkaži</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

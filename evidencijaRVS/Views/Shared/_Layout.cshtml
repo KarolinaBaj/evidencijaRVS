@@ -29,8 +29,12 @@
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Pregled" asp-action="Index">Pregled</a>
                         </li>
+
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Anamneza" asp-action="Index" >Anamneza</a>
+                        </li>
                     </ul>
-                    @* <li class="nav-item"> *@
+                    
                         <form asp-controller="Account" asp-action="stranazalogovanje" method="post">
                           <button class="nav-item text-dark logindugme" href="" target="_blank" rel="noopener noreferrer" asp-controller="Account" asp-action="stranazalogovanje">Log in</button> 
                        </form>
@@ -51,7 +55,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - Ambulanta - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - Ambulanta - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privatnost</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

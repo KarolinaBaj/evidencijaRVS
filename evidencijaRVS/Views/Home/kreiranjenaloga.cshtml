@@ -1,40 +1,51 @@
-﻿@model evidencijaRVS.Evidencija.DAL.Models.Korisnik
+﻿@using evidencijaRVS.ViewModels
+
+@model RegistracijaViewModel
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Kreiranje naloga</title>
 </head>
 <body>
     <div class="signupstrana">
         <form asp-controller="Account" asp-action="kreiranjenaloga" method="post">
+            <div asp-validation-summary="ModelOnly" style="color:red"></div>
 
-            <label>Ime</label><br >
-            <input asp-for="ime" placeholder="Ime"/> <br>
-            <span asp-validation-for="ime"></span> <br >
+            <label asp-for="Ime">Ime</label><br />
+            <input asp-for="Ime" placeholder="Ime" /><br />
+            <span asp-validation-for="Ime" style="color:red"></span><br />
 
-            <label>Prezime</label><br >
-            <input asp-for="prezime" placeholder="Prezime" /> <br>
-            <span asp-validation-for="prezime"></span> <br>
+            <label asp-for="Prezime">Prezime</label><br />
+            <input asp-for="Prezime" placeholder="Prezime" /><br />
+            <span asp-validation-for="Prezime" style="color:red"></span><br />
 
-            <label>Korisnički email</label> <br >
-            <input asp-for="email" placeholder="Email"/> <br >
-            <span asp-validation-for="email"></span> <br>
+            <label asp-for="Email">Korisnički email</label><br />
+            <input asp-for="Email" placeholder="Email" /><br />
+            <span asp-validation-for="Email" style="color:red"></span><br />
 
-            <label>Lozinka</label><br >
-            <input asp-for="lozinka" placeholder="Lozinka" type="password" /> <br>
-            <span asp-validation-for="lozinka"></span> <br>
+            <label asp-for="Lozinka">Lozinka</label><br />
+            <input asp-for="Lozinka" placeholder="Lozinka" /><br />
+            <span asp-validation-for="Lozinka" style="color:red"></span><br />
 
-            <label>adresa</label><br >
-            <input asp-for="adresa" placeholder="Adresa" /> <br>
-            <span asp-validation-for="adresa"></span> <br>
+            <label asp-for="PotvrdaLozinke">Potvrda lozinke</label><br />
+            <input asp-for="PotvrdaLozinke" placeholder="Ponovite lozinku" /><br />
+            <span asp-validation-for="PotvrdaLozinke" style="color:red"></span><br />
 
-            <button type="submit">Kreiraj nalog</button>
+            <label asp-for="Adresa">Adresa</label><br />
+            <input asp-for="Adresa" placeholder="Adresa" /><br />
+            <span asp-validation-for="Adresa" style="color:red"></span><br />
 
+            <button type="submit">Kreiraj nalog</button><br />
+            <a asp-controller="Home" asp-action="stranazalogovanje">Već imate nalog? Prijavite se</a>
         </form>
-
     </div>
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
 </body>
 </html>

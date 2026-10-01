@@ -1,63 +1,67 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using evidencijaRVS.ViewModels
+﻿@using evidencijaRVS.ViewModels
 @model PregledlistaViewModel
-@{
-}
-<head>
 
-</head>
+<div class="container">
+    <h2 class="mb-3">Pregledi</h2>
 
-<body>
-    <div class="container">
-        <h2 class="mb-3">Pregledi</h2>
-        <form method="get" class="row g-2 mb-4">
-            <div class="col-md-2">
-                <label class="form-label">Datum od</label>
-                <input type="date"name="datumod" value="@Model.Datumod?.ToString("yyyy-MM-dd") class="form-control"></input>
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Datum do</label>
-                <input type="date" name="datumDo" value="@Model.datumdo?.ToString("yyyy-MM-dd") class="form-control"></input>
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Hitan slucaj</labelclss>
-                    <select name="hitanSlucaj" class="form-select">
-                        <option value="">Svi</option>
-                        <option value="true" selected="@(Model.hitanslucaj == true)">Hitni</option>
-                        <option value="false" selected="@(Model.hitanslucaj == false)">Nisu Hitni</option>
-                    </select>
-            </div>
-            <div class=" col-md-3 d-flex align-items-end gap-2">
-                <button class="btn btn-primary">Filtriraj</button>
-                <a asp-action="Index" class="btn btn-outline-secondary">Ponisti</a>
+    <form method="get" class="row g-2 mb-4">
+        <div class="col-md-2">
+            <label class="form-label">Datum od</label>
+            <input type="date" name="datumod" value="@Model.Datumod?.ToString("yyyy-MM-dd")" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Datum do</label>
+            <input type="date" name="datumdo" value="@Model.datumdo?.ToString("yyyy-MM-dd")" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Hitan slučaj</label>
+            <select name="hitanslucaj" class="form-select">
+                <option value="">Svi</option>
+                <option value="true" selected="@(Model.hitanslucaj == true)">Hitni</option>
+                <option value="false" selected="@(Model.hitanslucaj == false)">Nisu hitni</option>
+            </select>
+        </div>
+        <div class="col-md-3 d-flex align-items-end gap-2">
+            <button class="btn btn-primary">Filtriraj</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Poništi</a>
+        </div>
+    </form>
 
-            </div>
-        </form>
-        <table class="table table-striped">
-            <thead>
+    <a asp-action="Dodaj" class="btn btn-success mb-3">Dodaj pregled</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Temperatura</th>
+                <th>Dijagnoza</th>
+                <th>Hitan</th>
+                <th>Prioritet</th>
+                <th>Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Pregledi.Any())
+            {
+                <tr><td colspan="6" class="text-center">Nema pregleda za zadate uslove</td></tr>
+            }
+            @foreach (var p in Model.Pregledi)
+            {
                 <tr>
-                    <Th>Datum</Th>
-                    <th>Temperatura</th>
-                    <th>Hitan</th>
-                    <th>Prioritet</th>
+                    <td>@p.datumpregleda.ToString("dd.MM.yyyy")</td>
+                    <td>@p.telesna_temperatura</td>
+                    <td>@p.dijagnoza</td>
+                    <td>@(p.hitanslucaj ? "Da" : "Ne")</td>
+                    <td>@p.prioritetpregleda</td>
+                    <td class="d-flex gap-2">
+                        <a asp-action="Izmeni" asp-route-id="@p.pregled_id" class="btn btn-sm btn-outline-primary">Izmeni</a>
+                        <form asp-action="Obrisi" asp-route-id="@p.pregled_id" method="post"
+                              onsubmit="return confirm('Da li sigurno želiš da obrišeš pregled?');">
+                            <button class="btn btn-sm btn-outline-danger">Obriši</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @if (!Model.Pregledi.Any()){
-                    <tr><td colspan="5" class="text-center">Nema pregleda za zadate uslove</td></tr>
-                }
-                @foreach(var p in Model.Pregledi){
-                    <tr>
-                        <td>@p.datumpregleda.ToString("dd.MM.yyyy")</td>
-                        <td>@p.telesna_temperatura</td>
-                        <td>@p.dijagnoza</td>
-                        <td>@(p.hitanslucaj ? "Da":"Ne")</td>
-                        <td>@p.prioritetpregleda</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</body>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,39 @@
+﻿@using evidencijaRVS.Evidencija.DAL.Models
+@model Pregled
+
+<div class="container">
+    <h2 class="mb-3">Novi pregled</h2>
+
+    <form asp-action="Dodaj" method="post">
+        
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+       
+        <input type="hidden" asp-for="anamneza_id" />
+
+        <div class="mb-3">
+            <label asp-for="datumpregleda" class="form-label">Datum pregleda</label>
+            <input asp-for="datumpregleda" type="date" class="form-control" />
+            <span asp-validation-for="datumpregleda" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="telesna_temperatura" class="form-label">Telesna temperatura</label>
+            <input asp-for="telesna_temperatura" class="form-control" />
+            <span asp-validation-for="telesna_temperatura" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="dijagnoza" class="form-label">Dijagnoza</label>
+            <input asp-for="dijagnoza" class="form-control" />
+            <span asp-validation-for="dijagnoza" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-primary">Sačuvaj</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Nazad</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

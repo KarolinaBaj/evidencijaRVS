@@ -1,0 +1,65 @@
+﻿@using evidencijaRVS.Evidencija.DAL.Models
+@model Pregled
+
+<div class="container">
+    <h2 class="mb-3">Izmena pregleda</h2>
+
+    <form asp-action="Izmeni" asp-route-id="@Model.pregled_id" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        
+        <input type="hidden" asp-for="pregled_id" />
+        <div class="mb-3">
+            <label asp-for="anamneza_id" class="form-label">ID Anamneze</label>
+            <input asp-for="anamneza_id" class="form-control" readonly />
+            <span asp-validation-for="anamneza_id" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="datumpregleda" class="form-label">Datum pregleda</label>
+            <input asp-for="datumpregleda" type="date" class="form-control" />
+            <span asp-validation-for="datumpregleda" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="telesna_temperatura" class="form-label">Telesna temperatura</label>
+            <input asp-for="telesna_temperatura" class="form-control" />
+            <span asp-validation-for="telesna_temperatura" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="dijagnoza" class="form-label">Dijagnoza</label>
+            <input asp-for="dijagnoza" class="form-control" />
+            <span asp-validation-for="dijagnoza" class="text-danger"></span>
+        </div>
+
+    
+        <div class="mb-3">
+            <label asp-for="terapija" class="form-label">Terapija</label>
+            <textarea asp-for="terapija" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="terapija" class="text-danger"></span>
+        </div>
+
+        
+        <div class="mb-3">
+            <label asp-for="prioritetpregleda" class="form-label">Prioritet pregleda</label>
+            <input asp-for="prioritetpregleda" class="form-control" placeholder="npr. Normalan, Visok..." />
+            <span asp-validation-for="prioritetpregleda" class="text-danger"></span>
+        </div>
+
+        
+        <div class="mb-3 form-check">
+            <input asp-for="hitanslucaj" class="form-check-input" type="checkbox" id="hitanslucaj" />
+            <label class="form-check-label" for="hitanslucaj">Hitan slučaj</label>
+        </div>
+
+        <button class="btn btn-primary">Sačuvaj izmene</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Nazad</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

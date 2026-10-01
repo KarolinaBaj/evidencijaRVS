@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace evidencijaRVS.Controllers
 {
-    public class HomeController : Controller
+    public class PocetnaController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<PocetnaController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public PocetnaController(ILogger<PocetnaController> logger)
         {
             _logger = logger;
         }

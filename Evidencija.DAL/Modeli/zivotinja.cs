@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace evidencijaRVS.Evidencija.DAL.Models
 {
     [Table("zivotinje")]
-    public class zivotinje
+    public class zivotinja
     {
         [Key]
         [Required]

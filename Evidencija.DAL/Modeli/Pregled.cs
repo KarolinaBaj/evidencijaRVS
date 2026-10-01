@@ -34,6 +34,7 @@ namespace evidencijaRVS.Evidencija.DAL.Models
 
         public List<terapija> Terapije { get; set; } = new List<terapija>();
         [ForeignKey("anamneza_id")]
+        
         public anamneza Anamneza { get; set; }
 
     }
