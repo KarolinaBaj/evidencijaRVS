@@ -46,7 +46,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Pregled}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
