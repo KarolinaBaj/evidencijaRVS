@@ -2,7 +2,9 @@
 @using evidencijaRVS.ViewModels
 @model PrijavaViewModel
 
-<form asp-controller="Account" asp-action="stranazalogovanje" method="post">
+<body>
+<div class="loginstrana">
+<form asp-controller="Nalog" asp-action="stranazalogovanje" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3">
@@ -18,7 +20,8 @@
 
     <button class="btn btn-primary">Prijavi se</button>
 </form>
-
+    </div>
+    </body>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -13,6 +13,13 @@ namespace evidencijaRVS.Controllers
         {
             KorisnikService = korisnikService;
         }
+        [HttpGet]
+        public IActionResult stranazalogovanje()
+        {
+            return View("~/Views/Home/stranazalogovanje.cshtml", new PrijavaViewModel());
+        }
+        
+       
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> stranazalogovanje(PrijavaViewModel model)
@@ -27,10 +34,15 @@ namespace evidencijaRVS.Controllers
                 return View("~/Views/Home/stranazalogovanje.cshtml", model);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Pregled");
+
+        }
+        public IActionResult kreiranjenaloga()
+        {
+            return View("~/Views/Home/kreiranjenaloga.cshtml", new RegistracijaViewModel());
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpGet, ValidateAntiForgeryToken]
         public async Task<IActionResult> kreiranjenaloga(RegistracijaViewModel model)
         {
             if (!ModelState.IsValid)
@@ -56,7 +68,9 @@ namespace evidencijaRVS.Controllers
             }
 
             
-            return RedirectToAction("~/Views/Home/stranazalogovanje.cshtml");
+            return RedirectToAction("stranazalogovanje", "Nalog");
         }
+
+
     }
 }
