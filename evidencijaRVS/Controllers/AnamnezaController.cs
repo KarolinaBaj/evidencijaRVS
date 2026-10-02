@@ -28,7 +28,7 @@ namespace evidencijaRVS.Controllers
             var anamneza = _baza.Anamneze.FirstOrDefault(a => a.anamneza_id == id);
             if (anamneza == null)
             {
-                return View("Index", null); 
+                return View("Index", null);
             }
 
             var zivotinja = _baza.Zivotinje.FirstOrDefault(z => z.zivotinja_id == anamneza.zivotinja_id);
@@ -44,7 +44,7 @@ namespace evidencijaRVS.Controllers
             return View(model);
         }
 
-        
+
         [HttpGet]
         public IActionResult Dodaj(int zivotinjaId)
         {
@@ -52,7 +52,7 @@ namespace evidencijaRVS.Controllers
             return View();
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Dodaj(anamneza novaAnamneza)
@@ -70,12 +70,30 @@ namespace evidencijaRVS.Controllers
             return View(novaAnamneza);
         }
 
-        // 4. Preuzimanje Word dokumenta anamneze
+
         public IActionResult PreuzmiWord(int id)
         {
-      
+
 
             return RedirectToAction("Index", new { id = id });
+        }
+
+        public IActionResult Stampa(int id)
+        {
+            var anamneza = _baza.Anamneze.FirstOrDefault(a => a.anamneza_id == id);
+            if (anamneza == null) return NotFound();
+
+            var zivotinja = _baza.Zivotinje.FirstOrDefault(z => z.zivotinja_id == anamneza.zivotinja_id);
+            var korisnik = zivotinja != null
+                ? _baza.Korisnici.FirstOrDefault(k => k.korisnik_id == zivotinja.korisnik_id)
+                : null;
+
+            return View(new AnamnezaStampaVM
+            {
+                Anamneza = anamneza,
+                Zivotinja = zivotinja,
+                Korisnik = korisnik
+            });
         }
     }
 }

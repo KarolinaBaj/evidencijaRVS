@@ -6,6 +6,15 @@ namespace Evidencija.DAL.Repozitorijumi
     {
         protected readonly string _connectionString;
 
+        
+
+        public SqlBaseRepozitorijum(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
+      
+
         protected SqlBaseRepozitorijum()
         {
             
